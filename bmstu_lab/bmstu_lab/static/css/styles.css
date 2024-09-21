@@ -1,0 +1,46 @@
+/* Контейнер для смещения содержимого вниз */
+.page-container {
+  height: 100vh; /* Высота экрана */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 25vh; /* Сместить содержимое вниз на 1/4 высоты страницы */
+  box-sizing: border-box;
+}
+
+/* Блок с информацией о студенте */
+.student-info {
+  display: flex;
+  flex-direction: column; /* Вертикальное расположение */
+  align-items: center; /* Центрирование по горизонтали */
+  gap: 20px; /* Расстояние между изображением и текстом */
+  /* Можно добавить тень или рамку для улучшения внешнего вида */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  /* padding: 20px; */
+}
+
+/* Стили для изображения студента */
+.student-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; /* Корректное отображение изображения */
+  border-radius: 10px; /* Закругление углов, опционально */
+  border: 2px solid #ccc; /* Рамка вокруг изображения */
+}
+
+/* Стили для деталей студента */
+.student-details {
+  text-align: center; /* Выравнивание текста по центру */
+  max-width: 400px; /* Максимальная ширина для улучшения читаемости */
+}
+
+.student-details h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.student-details p {
+  margin: 5px 0;
+  font-size: 16px;
+}

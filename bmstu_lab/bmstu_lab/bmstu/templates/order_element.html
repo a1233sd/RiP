@@ -1,0 +1,6 @@
+<li>
+    {{ element.title }}
+    <form action="{% url 'order_url' element.id %}" method="get" style="display:inline;">
+        <button type="submit">Подробнее</button>
+    </form>
+</li>

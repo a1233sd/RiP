@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Информация о студенте{% endblock %}
+
+{% block content %}
+    <!-- Подключение CSS-файла -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <!-- Контейнер для смещения содержимого вниз -->
+    <div class="page-container">
+        <div class="student-info">
+            <!-- Изображение студента -->
+            <img src="{{ data.student.photo_url }}" alt="Фото {{ data.student.name }}" class="student-photo">
+            
+            <!-- Детали студента под изображением -->
+            <div class="student-details">
+                <h2>{{ data.student.name }}</h2>
+                <p><strong>Группа:</strong> {{ data.student.group }}</p>
+                <p><strong>Курс:</strong> {{ data.student.course }}</p>
+                <p><strong>Год поступления:</strong> {{ data.student.year }}</p>
+                <p><strong>Номер студенческого:</strong> {{ data.student.student_id }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

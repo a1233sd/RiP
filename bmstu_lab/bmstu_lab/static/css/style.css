@@ -1,0 +1,155 @@
+/* Стили для заголовка */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #7F9FF8;
+  border-bottom: 0px solid #7F9FF8;
+  width: 100%; /* Растягиваем на всю ширину */
+  box-sizing: border-box; /* Учитываем padding в общей ширине */
+}
+
+
+
+
+/* Стиль для иконки "Домой" */
+.home-button {
+  text-decoration: none;
+}
+
+.home-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Стили для контейнера корзины */
+.cart-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 10px;
+  background-color: #f8f9fa;
+}
+
+.cart-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex; /* Добавляем flex для выравнивания иконки внутри кнопки */
+  align-items: center; /* Выравниваем иконку по вертикали */
+  justify-content: flex-end;
+}
+
+.cart-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Стили для формы поиска */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 1400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 13px;
+  margin-right: 10px;
+  background-color: #D9D9D9;
+}
+
+.search-button {
+  background-color: white; /* Белый фон */
+  color: #007bff; /* Синий цвет шрифта */
+  border: 2px solid #007bff; /* Синий контур */
+  padding: 7px;
+  border-radius: 13px;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+}
+
+.search-button:hover {
+  background-color: #e6f0ff; /* Светло-синий фон при наведении */
+  color: #0056b3; /* Более тёмный синий шрифт при наведении */
+  border-color: #0056b3; /* Более тёмный контур при наведении */
+}
+
+/* Стили для списка студентов */
+.students-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.student-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Фотография студента */
+.student-photo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+/* Детали студента */
+.student-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.student-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+
+/* Стили для заголовка */
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+
+
+/* Кнопка "Подробнее" */
+.detail-button {
+  background-color: white; /* Белый фон */
+  color: #007bff; /* Синий цвет шрифта */
+  border: 2px solid #007bff; /* Синий контур */
+  padding: 7px;
+  border-radius: 13px;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+}
+
+.detail-button:hover {
+  background-color: #e6f0ff; /* Светло-синий фон при наведении */
+  color: #0056b3; /* Более тёмный синий шрифт при наведении */
+  border-color: #0056b3; /* Более тёмный контур при наведении */
+}

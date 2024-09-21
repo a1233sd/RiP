@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Список студентов{% endblock %}
+
+{% block content %}
+    <!-- Контейнер заголовка -->
+    <h1 class="page-title">Студенты</h1>
+
+    <!-- Форма поиска -->
+    <div class="search-container">
+        <form method="get" action="{% url 'orders' %}">
+            <input type="text" name="q" class="search-input" placeholder="Поиск по ФИО" value="{{ data.query }}">
+            <button type="submit" class="search-button">Искать</button>
+        </form>
+    </div>
+
+    <ul class="students-list">
+        {% for order in data.orders %}
+            <li class="student-item">
+                <img src="{{ order.photo_url }}" alt="Фото {{ order.title }}" class="student-photo">
+                <div class="student-details">
+                    <span class="student-name">{{ order.title }}</span>
+                    <form action="{% url 'order_detail' order.id %}" method="get">
+                        <button type="submit" class="detail-button">Подробнее</button>
+                    </form>
+                </div>
+            </li>
+        {% empty %}
+            <li>Список пуст</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

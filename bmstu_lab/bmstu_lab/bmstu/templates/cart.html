@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+
+<div class="form-container">
+    <h1 class="page-title">Составление заявки</h1>
+
+    <!-- Форма с номерами и датами -->
+    <div class="form-fields">
+        <div class="input-field">
+            <label for="order-number">Номер приказа</label>
+            <div class="input-with-button">
+                <input type="text" id="order-number" name="order-number" placeholder="Номер">
+            </div>
+        </div>
+        <div class="input-field">
+            <label for="order-date">Дата заявления</label>
+            <div class="input-with-button">
+                <input type="date" id="order-date" name="order-date" class="date-input">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Проверка на ошибку -->
+    {% if error %}
+        <div class="error-message">{{ error }}</div>
+    {% endif %}
+
+    <!-- Карточка студента -->
+    {% if student %}
+        <li class="student-card">
+            <img src="{{ student.photo_url }}" alt="Фото {{ student.name }}" class="student-photo">
+            <div class="student-info">
+                <span class="student-name">{{ student.name }}</span>
+                <form action="{% url 'order_detail' student.student_id %}" method="get">
+                    <button type="submit" class="detail-button">Подробнее</button>
+                </form>
+            </div>
+        </li>
+    {% else %}
+        <p>Студент не найден.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
