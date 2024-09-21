@@ -14,27 +14,27 @@ def GetOrders(request):
         {
             'id': 1,
             'title': 'Хомякова Дарья Артёмовна',
-            'photo_url': 'http://127.0.0.1:9002/image/1.jpg'
+            'photo_url': 'http://127.0.0.1:9000/image/1.jpg'
         },
         {
             'id': 2,
             'title': 'Грибова Малика Максимовна',
-            'photo_url': 'http://127.0.0.1:9002/image/2.jpg'
+            'photo_url': 'http://127.0.0.1:9000/image/2.jpg'
         },
         {
             'id': 3,
             'title': 'Любимов Матвей Степанович',
-            'photo_url': 'http://127.0.0.1:9002/image/3.jpg'
+            'photo_url': 'http://127.0.0.1:9000/image/3.jpg'
         },
         {
             'id': 4,
             'title': 'Зубков Андрей Иванович',
-            'photo_url': 'http://127.0.0.1:9002/image/4.jpg'
+            'photo_url': 'http://127.0.0.1:9000/image/4.jpg'
         },
         {
             'id': 5,
             'title': 'Никонов Михаил Леонидович',
-            'photo_url': 'http://127.0.0.1:9002/image/5.jpg'
+            'photo_url': 'http://127.0.0.1:9000/image/5.jpg'
         },
     ]
     
@@ -56,7 +56,7 @@ def GetOrder(request, id):
             'course': 2,
             'year': 2023,
             'student_id': '23У023',
-            'photo_url': 'http://127.0.0.1:9002/image/1.jpg'  
+            'photo_url': 'http://127.0.0.1:9000/image/1.jpg'  
         },
         2: {
             'name': 'Грибова Малика Максимовна',
@@ -64,7 +64,7 @@ def GetOrder(request, id):
             'course': 3,
             'year': 2022,
             'student_id': '22Р034',
-            'photo_url': 'http://127.0.0.1:9002/image/2.jpg'
+            'photo_url': 'http://127.0.0.1:9000/image/2.jpg'
         },
         3: {
             'name': 'Любимов Матвей Степанович',
@@ -72,7 +72,7 @@ def GetOrder(request, id):
             'course': 1,
             'year': 2024,
             'student_id': '24Э143',
-            'photo_url': 'http://127.0.0.1:9002/image/3.jpg'
+            'photo_url': 'http://127.0.0.1:9000/image/3.jpg'
         },
         4: {
             'name': 'Зубков Андрей Иванович',
@@ -80,7 +80,7 @@ def GetOrder(request, id):
             'course': 4,
             'year': 2021,
             'student_id': '21Ц010',
-            'photo_url': 'http://127.0.0.1:9002/image/4.jpg'
+            'photo_url': 'http://127.0.0.1:9000/image/4.jpg'
         },
         5: {
             'name': 'Никонов Михаил Леонидович',
@@ -88,7 +88,7 @@ def GetOrder(request, id):
             'course': 3,
             'year': 2022,
             'student_id': '22Ю054',
-            'photo_url': 'http://127.0.0.1:9002/image/5.jpg'
+            'photo_url': 'http://127.0.0.1:9000/image/5.jpg'
         },
     }
     student = students.get(id)
