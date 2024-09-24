@@ -12,7 +12,7 @@ header {
   padding: 10px;
   background-color: #7F9FF8;
   border-bottom: 0px solid #7F9FF8;
-  width: 100%; /* Растягиваем на всю ширину */
+  width: 10%; /* Растягиваем на всю ширину */
   box-sizing: border-box; /* Учитываем padding в общей ширине */
 }
 

@@ -20,7 +20,7 @@ from bmstu import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.GetOrders),
+    path('', views.GetOrders, name='orders'),
     path('order/<int:id>/', views.GetOrder, name='order_url'),
     path('sendText', views.sendText, name='sendText'),
     path('students/', views.GetOrders, name='orders'),  # Определяем маршрут для списка студентов
