@@ -3,6 +3,8 @@ body, html {
   margin: 0;
   padding: 0;
   width: 100%;
+  overflow-x: hidden; /* Убирает горизонтальный ползунок */
+  box-sizing: border-box;
 }
 
 header {
@@ -11,13 +13,9 @@ header {
   align-items: center;
   padding: 10px;
   background-color: #7F9FF8;
-  border-bottom: 0px solid #7F9FF8;
-  width: 10%; /* Растягиваем на всю ширину */
+  width: 100%; /* Растягиваем на всю ширину */
   box-sizing: border-box; /* Учитываем padding в общей ширине */
 }
-
-
-
 
 /* Стиль для иконки "Домой" */
 .home-button {
@@ -29,21 +27,20 @@ header {
   height: 40px;
 }
 
-/* Стили для контейнера корзины */
-.cart-container {
-  display: flex;
-  justify-content: flex-end;
-  padding: 20px 10px;
-  background-color: #f8f9fa;
-}
-
+/* Стили для кнопки корзины */
 .cart-button {
   background: none;
   border: none;
   cursor: pointer;
-  display: flex; /* Добавляем flex для выравнивания иконки внутри кнопки */
-  align-items: center; /* Выравниваем иконку по вертикали */
-  justify-content: flex-end;
+  display: flex; /* Выравнивание иконки внутри кнопки */
+  align-items: center; /* Выравнивание по вертикали */
+  justify-content: center; /* Центрирование по горизонтали */
+  position: fixed; /* Фиксированное позиционирование */
+  top: 70px; /* Расстояние от верхнего края страницы */
+  right: 20px; /* Расстояние от правого края страницы */
+  width: 40px; /* Ширина кнопки */
+  height: 40px; /* Высота кнопки */
+  z-index: 1000; /* Поверх других элементов */
 }
 
 .cart-icon {
@@ -51,33 +48,58 @@ header {
   height: 40px;
 }
 
+/* Стиль для числа на иконке корзины */
+.cart-count {
+  position: absolute;
+  top: 28px;
+  right: -5px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 11px; /* Размер счетчика */
+  height: 11px; /* Размер счетчика */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* Стили для формы поиска */
 /* Стили для формы поиска */
 .search-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  width: 100%; /* Добавлено для растягивания на всю ширину */
+  padding: 0 20px; /* Добавлены горизонтальные отступы */
+  box-sizing: border-box; /* Учитывает padding в общей ширине */
 }
 
 .search-input {
-  width: 1400px;
+  /* Удалена фиксированная ширина и добавлен flex */
+  flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 13px;
-  margin-right: 10px;
+  border-radius: 13px 0 0 13px; /* Скругление только левых углов */
+  margin-right: -1px; /* Убирает двойную границу с кнопкой */
   background-color: #D9D9D9;
+  box-sizing: border-box; /* Учитывает padding и border в общей ширине */
 }
 
 .search-button {
+  /* Удалена фиксированная ширина и добавлен flex */
+  flex: 0 0 auto;
   background-color: white; /* Белый фон */
   color: #007bff; /* Синий цвет шрифта */
   border: 2px solid #007bff; /* Синий контур */
-  padding: 7px;
-  border-radius: 13px;
+  padding: 10px 20px; /* Увеличен padding для лучшего соответствия */
+  border-radius: 0 13px 13px 0; /* Скругление только правых углов */
   cursor: pointer;
-  width: 120px;
   text-align: center;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Плавные переходы при наведении */
 }
 
+/* Стили для кнопки при наведении */
 .search-button:hover {
   background-color: #e6f0ff; /* Светло-синий фон при наведении */
   color: #0056b3; /* Более тёмный синий шрифт при наведении */
@@ -125,7 +147,6 @@ header {
   margin-bottom: 5px;
 }
 
-
 /* Стили для заголовка */
 .page-title {
   text-align: center;
@@ -133,8 +154,6 @@ header {
   color: #333;
   margin-bottom: 10px;
 }
-
-
 
 /* Кнопка "Подробнее" */
 .detail-button {
