@@ -106,6 +106,7 @@ def GetOrder(request, id):
         'student': student
     }})
 
+
 def sendText(request):
     input_text = request.POST['text']
 

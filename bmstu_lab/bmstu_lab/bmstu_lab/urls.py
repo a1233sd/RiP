@@ -19,11 +19,10 @@ from django.urls import path
 from bmstu import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.GetOrders, name='orders'),
-    path('order/<int:id>/', views.GetOrder, name='order_url'),
     path('sendText', views.sendText, name='sendText'),
     path('students/', views.GetOrders, name='orders'),  # Определяем маршрут для списка студентов
     path('student/<int:id>/', views.GetOrder, name='order_detail'),  # Для детальной информации о студенте
     path('cart/', views.cart_view, name='cart'),  # Страница корзины
+
 ]
