@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="container student-page">
+
+        <div class="row">
+            <div class="col-6">
+                <img src="{{ student.image }}" class="student-image" style="width: 250px" alt=""/>
+            </div>
+            <div class="col-6 d-flex flex-md-column gap-md-3">
+
+                <h1>{{ student.name }}</h1>
+
+                <span>Курс: {{ student.course }}</span>
+
+                <span>Номер студенческого: {{ student.number }}</span>
+
+                <span>Группа: {{ student.group }}</span>
+
+                <a href="/" class="btn btn-primary my-4 w-25 return-btn">
+                    Домой
+                </a>
+
+            </div>
+        </div>
+
+    </main>
+{% endblock content %}
