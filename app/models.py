@@ -21,7 +21,7 @@ class Students(models.Model):
         return self.name
 
 
-# Заявка (аналог проводки)
+# Заявка 
 class Decree(models.Model):
     STATUS_CHOICES = (
         (1, 'Черновик'),
@@ -57,7 +57,7 @@ class Decree(models.Model):
         db_table = "decrees"
 
 
-# Связь студенты-заявка (аналог связи корабль-проводка)
+# Связь студенты-заявка 
 class DecreeStudents(models.Model):
     decree = models.ForeignKey(Decree, on_delete=models.CASCADE, verbose_name="Заявка")
     student = models.ForeignKey(Students, on_delete=models.CASCADE, verbose_name="Студент")

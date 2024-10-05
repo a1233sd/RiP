@@ -16,8 +16,9 @@
                 </form>
             </div>
             <div class="col-md-4 justify-end">
-                <a href="/decrees/{{ draft_decree.id }}/" class="w-0">
-                    <button type="submit" class="bin btn btn-primary position-relative w-100">
+                <a href="{% if students_count > 0 %}/decrees/{{ draft_decree.id }}{% else %}#{% endif %}" class="w-0">
+                    <button type="submit" class="bin btn btn-primary position-relative w-100" 
+                            {% if students_count == 0 %} disabled {% endif %}>
                         <img src="http://localhost:9000/images/cart.png" alt="Корзина" style="max-width: 100%; height: auto;">
                         <div class="badge position-absolute badge rounded-pill">
                             {{ students_count }}
@@ -25,6 +26,8 @@
                     </button>
                 </a>
             </div>
+            
+            
         </div>
 
         <!-- Цикл по студентам из базы данных -->

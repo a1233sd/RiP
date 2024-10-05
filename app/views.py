@@ -29,10 +29,7 @@ def index(request):
     else:
         draft_decree = None
     
-    if not draft_decree:
-        # Создаём новую заявку, если её нет
-        draft_decree = Decree.objects.create(status=1)
-        request.session['decree_id'] = draft_decree.id
+   
     
     students_count = DecreeStudents.objects.filter(decree=draft_decree).count()
     
@@ -83,35 +80,40 @@ def view_decree(request, decree_id):
     
     return render(request, 'decree_page.html', context)
 
+
 def delete_decree(request, decree_id):
-    # Получаем объект Decree по id
-    decree = get_object_or_404(Decree, id=decree_id)
-    
-    # Удаляем всех студентов, связанных с этой заявкой
-    DecreeStudents.objects.filter(decree=decree).delete()
-    
-    # Обновляем статус заявки на "Удалено"
-    decree.status = 5
-    decree.save()
+    # Удаление всех студентов, связанных с заявкой через SQL
+    with connection.cursor() as cursor:
+        # Удаляем студентов, связанных с заявкой
+        cursor.execute("DELETE FROM decree_students WHERE decree_id = %s", [decree_id])
+        
+        # Обновляем статус заявки на "Удалено" (5)
+        cursor.execute("UPDATE decrees SET status = 5 WHERE id = %s", [decree_id])
     
     return redirect('index')
+
 
 
 def add_to_decree(request, student_id):
     # Получаем текущую заявку из сессии
     decree_id = request.session.get('decree_id')
-    
-    if not decree_id:
-        # Если нет, создаём новую заявку
-        decree = Decree.objects.create(status=1)
-        request.session['decree_id'] = decree.id
+    if decree_id:
+        try:
+            draft_decree = Decree.objects.get(id=decree_id, status=1)
+        except Decree.DoesNotExist:
+            draft_decree = None
     else:
-        decree = get_object_or_404(Decree, id=decree_id, status=1)
+        draft_decree = None
+    
+    if not draft_decree:
+        # Создаём новую заявку, если её нет
+        draft_decree = Decree.objects.create(status=1)
+        request.session['decree_id'] = draft_decree.id
     
     student = get_object_or_404(Students, id=student_id)
     
     # Проверка, есть ли уже этот студент в заявке
-    decree_student, created = DecreeStudents.objects.get_or_create(decree=decree, student=student)
+    decree_student, created = DecreeStudents.objects.get_or_create(decree=draft_decree, student=student)
     if not created:
         decree_student.count += 1
         decree_student.save()
