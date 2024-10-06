@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="container">
+
+    <h3 class="text-center">Корзина</h3>
+
+    <!-- Дата создания заявки -->
+    <span>Дата создания: {{ decree.date_created }}</span>
+
+    <h4 class="text-center mt-4">Студенты в корзине</h4>
+
+    <!-- Отображение студентов в корзине -->
+    <div class="cards-wrapper d-flex flex-column">
+        {% for student in students %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ student.image }}" class="img-fluid rounded-start" alt="{{ student.name }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ student.name }}</h5>
+                            <p class="card-text">Курс: {{ student.course }}</p>
+                            <p class="card-text">Группа: {{ student.group }}</p>
+                            <p class="card-text">Номер студенческого: {{ student.number }}</p>
+                            <p class="card-text">Долги: {{ student.debt_count }}</p>
+
+                            <!-- Форма для обновления долгов -->
+                            <form action="{% url 'update_debt' decree.id student.id %}" method="post" class="form-inline">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="debt_count_{{ student.id }}">Обновить долги:</label>
+                                    <input type="number" name="debt_count" id="debt_count_{{ student.id }}" class="form-control ml-2" value="{{ student.debt_count }}" min="0">
+                                </div>
+                                <button type="submit" class="btn btn-primary ml-2">Сохранить</button>
+                            </form>
+
+                            <!-- Кнопка для удаления студента из корзины -->
+                            <a href="{% url 'remove_from_decree' decree.id student.id %}" class="btn btn-danger mt-2">Удалить из корзины</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Ваша корзина пуста</p>
+        {% endfor %}
+    </div>
+
+    <!-- Кнопка для удаления всей заявки -->
+    <a href="{% url 'delete_decree' decree.id %}" class="btn btn-danger mt-3">Удалить заявку</a>
+
+</main>
+{% endblock content %}
