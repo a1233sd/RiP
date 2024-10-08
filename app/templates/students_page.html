@@ -16,15 +16,15 @@
                 </form>
             </div>
             <div class="col md-4 justify-end">
-                <a href="/decrees/{{ draft_decree.id }}/" class="w-25">
+                <a href="/decrees/{{ draft_decree.id }}/" class="w-0">
                     <button type="submit" class="bin btn btn-primary position-relative w-100">
-                        Корзина
+                        <img src="http://localhost:9000/images/cart.png" alt="Корзина" style="max-width: 100%; height: auto;">
                         <div class="badge position-absolute badge rounded-pill">
                             {{ students_count }}
                         </div>
                     </button>
                 </a>
-            </div>
+            </div>            
         </div>
         <div class="cards-wrapper">
             {% for student in students %}
