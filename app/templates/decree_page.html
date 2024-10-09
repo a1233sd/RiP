@@ -5,7 +5,10 @@
 <main class="container">
 
     <h3 class="text-center">Корзина</h3>
+    {% if decree.status == 5 %}
 
+    <h3>Заявка удалена</h3>
+    {% else %}
     <!-- Дата создания заявки -->
     <span>Дата создания: {{ decree.date_created }}</span>
 
@@ -38,7 +41,7 @@
                             </form>
 
                             <!-- Кнопка для удаления студента из корзины -->
-                            <a href="{% url 'remove_from_decree' decree.id student.id %}" class="btn btn-danger mt-2">Удалить из корзины</a>
+                            <a href="{% url 'remove_from_decree' decree.id student.id %}" class="btn btn-danger mt-2 ">Удалить из корзины</a>
                         </div>
                     </div>
                 </div>
@@ -46,6 +49,7 @@
         {% empty %}
             <p>Ваша корзина пуста</p>
         {% endfor %}
+        {% endif %}
     </div>
 
     <!-- Кнопка для удаления всей заявки -->

@@ -18,24 +18,23 @@
     --primary-btn-color: #fff;
     --primary-btn-color--hover: #fff;
 
-    --bin-bg: var(--primary-color);
-    --bin-bg--hover: var(--primary-color__hover);
-    --bin-border: var(--primary-color);
-    --bin-border--hover: var(--primary-color__hover);
-    --bin-color: #fff;
-    --bin-color--hover: #fff;
-
-    --badge-bg: var(--primary-color);
-    --badge-bg--hover: var(--primary-color__hover);
+    --bin-bg: transparent; /* Сделать фон прозрачным */
+    --bin-bg--hover: transparent; /* Сделать фон прозрачным при наведении */
+    --bin-border: transparent; /* Убрать границу или установить другой цвет */
+    --bin-border--hover: transparent; /* Убрать границу при наведении */
+    --bin-color: #000; /* Измените цвет иконки или текста при необходимости */
+    --bin-color--hover: #000; /* Цвет при наведении */
+    --badge-bg: var(--text_color);
+    --badge-bg--hover: var(--text_color);
     --badge-color: #fff;
     --badge-color--hover: #fff;
 
-    --search-bg: var(--primary-color);
-    --search-bg--hover: var(--primary-color__hover);
-    --search-border: var(--primary-color);
-    --search-border--hover: var(--primary-color__hover);
-    --search-color: #fff;
-    --search-color--hover: #fff;
+    --search-bg: transparent;                         /* Прозрачный фон */
+    --search-bg--hover: rgba(0, 0, 0, 0.05);          /* Лёгкая прозрачность при наведении */
+    --search-border: #000;                           /* Чёрная граница */
+    --search-border--hover: #000;                    /* Чёрная граница при наведении */
+    --search-color: #000;                            /* Чёрный цвет текста */
+    --search-color--hover: #000;
 
     --return-bg: var(--primary-color);
     --return-bg--hover: var(--primary-color__hover);
@@ -208,3 +207,23 @@ main {
     border-color: var(--bin-border--hover) !important;
     color: var(--bin-color--hover) !important;
 }
+.bin.btn.btn-primary img {
+    width: 30px; /* Установите желаемую ширину */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+}
+.bin.btn.btn-primary {
+    padding: 5px 10px; /* Уменьшите значения отступов */
+    min-width: 40px; /* Установите минимальную ширину кнопки */
+    height: 40px; /* Установите фиксированную высоту кнопки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Стили для кнопки "Поиск" */
+.search-btn.btn.btn-primary {
+    background-color: transparent; /* Прозрачный фон */
+    border: 2px solid #000;       /* Чёрная граница толщиной 2px */
+    color: #000;                   /* Чёрный цвет текста */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Плавные переходы */
+}
+

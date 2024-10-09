@@ -23,7 +23,7 @@ def index(request):
     decree_id = request.session.get('decree_id')
     if decree_id:
         try:
-            draft_decree = Decree.objects.get(id=decree_id, status='Черновик')
+            draft_decree = Decree.objects.get(id=decree_id, status=1)
         except Decree.DoesNotExist:
             draft_decree = None
     else:
@@ -31,7 +31,7 @@ def index(request):
     
     if not draft_decree:
         # Создаём новую заявку, если её нет
-        draft_decree = Decree.objects.create(status='Черновик')
+        draft_decree = Decree.objects.create(status=1)
         request.session['decree_id'] = draft_decree.id
     
     students_count = DecreeStudents.objects.filter(decree=draft_decree).count()
@@ -91,7 +91,7 @@ def delete_decree(request, decree_id):
     DecreeStudents.objects.filter(decree=decree).delete()
     
     # Обновляем статус заявки на "Удалено"
-    decree.status = 'Удалено'
+    decree.status = 5
     decree.save()
     
     return redirect('index')
@@ -103,10 +103,10 @@ def add_to_decree(request, student_id):
     
     if not decree_id:
         # Если нет, создаём новую заявку
-        decree = Decree.objects.create(status='Черновик')
+        decree = Decree.objects.create(status=1)
         request.session['decree_id'] = decree.id
     else:
-        decree = get_object_or_404(Decree, id=decree_id, status='Черновик')
+        decree = get_object_or_404(Decree, id=decree_id, status=1)
     
     student = get_object_or_404(Students, id=student_id)
     
@@ -135,7 +135,7 @@ def remove_from_decree(request, decree_id, student_id):
     return redirect('view_decree', decree_id=decree_id)
 
 def view_deleted_decree(request, decree_id):
-    decree = get_object_or_404(Decree, id=decree_id, status='Удалено')
+    decree = get_object_or_404(Decree, id=decree_id, status=5)
     students_in_decree = DecreeStudents.objects.filter(decree=decree)
     
     # Собираем подробную информацию о студентах
