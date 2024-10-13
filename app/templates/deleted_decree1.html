@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="container">
+
+    <!-- Заголовок для удалённой заявки -->
+    <h3 class="text-center text-danger">Удалённая заявка</h3>
+
+    <!-- Информация о заявке -->
+    <div class="mt-4">
+        <p><strong>Номер заявки:</strong> {{ decree.id }}</p>
+        <p><strong>Статус:</strong> {{ decree.status }}</p>
+        <p><strong>Дата создания:</strong> {{ decree.date_created }}</p>
+    </div>
+
+    <h4 class="text-center mt-4">Список студентов в удалённой заявке</h4>
+
+    <!-- Отображение студентов, которые были добавлены в удалённую заявку -->
+    <div class="cards-wrapper d-flex flex-column">
+        {% for student in students %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ student.image }}" class="img-fluid rounded-start" alt="{{ student.name }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ student.name }}</h5>
+                            <p class="card-text">Курс: {{ student.course }}</p>
+                            <p class="card-text">Группа: {{ student.group }}</p>
+                            <p class="card-text">Номер студенческого: {{ student.number }}</p>
+                            <p class="card-text">Количество: {{ student.count }} шт.</p>
+                            <p class="card-text"><small class="text-muted">Долги: {{ student.debt_count }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Студентов в удалённой заявке нет.</p>
+        {% endfor %}
+    </div>
+
+</main>
+{% endblock content %}
